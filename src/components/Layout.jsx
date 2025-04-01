@@ -42,14 +42,14 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen">
       {/* Navigation Bar */}
-      <nav className="fixed top-4 left-1/2 transform card -translate-x-1/2 z-50 bg-card-bg/80 backdrop-blur-lg rounded-full  shadow-lg px-2 py-1">
+      <nav className="fixed top-4 left-1/2 transform card -translate-x-1/2 z-50 bg-card-bg/80 backdrop-blur-lg rounded-full shadow-lg px-2 py-1">
         <div className="flex items-center space-x-1">
           {sidebarLinks.map((link) => (
             <Menu key={link.path} as="div" className="relative">
               <Menu.Button className="focus:outline-none">
                 <Link
                   to={link.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 
                     ${location.pathname === link.path 
                       ? 'bg-accent-color text-bg-primary' 
                       : 'hover:bg-white/10'}`}

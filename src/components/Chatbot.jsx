@@ -87,7 +87,7 @@ function Chatbot() {
           className={`
             max-w-[80%] rounded-2xl p-4 shadow-lg
             ${isBot 
-              ? 'bg-gradient-to-br from-gray-700 to-gradient-end/90 backdrop-blur-lg shadow-3xl border-gray-400' 
+              ? 'bg-accent-color dark:text-black text-white backdrop-blur-lg shadow-3xl border-gray-400' 
               : 'bg-accent-color text-bg-primary'
             }
           `}

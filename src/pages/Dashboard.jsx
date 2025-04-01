@@ -31,7 +31,7 @@ const data = [
 
 const skills = [
   { name: 'Machine Learning', icon: <FaBrain />, level: 95 },
-  { name: 'Data Analytics', icon: <FaDatabase />, level: 90 },
+  { name: 'Data Analytics', icon: <FaDatabase />, level: 95 },
   { name: 'Deep Learning', icon: <FaChartLine />, level: 85 },
   { name: 'Python/R', icon: <FaCode />, level: 88 },
 ];
@@ -53,7 +53,7 @@ function Dashboard() {
       >
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
-            <h1 className="text-5xl font-bold mb-4">Dr. DV Ramana</h1>
+            <h1 className="md:text-5xl text-3xl font-bold mb-4">Dr. DV Ramana</h1>
             <p className="text-xl opacity-80 mb-6">Data Science & AI Expert</p>
             <div className="flex flex-wrap gap-3 mb-6">
               <span className="data-tag">Machine Learning</span>
