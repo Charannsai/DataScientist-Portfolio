@@ -1,0 +1,248 @@
+@import '@fontsource/plus-jakarta-sans/300.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/space-grotesk/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color-scheme: dark;
+  --text-secondary: #d1d5db; /* Default for dark theme (text-gray-300) */
+}
+
+:root[class~="light"] {
+  color-scheme: light;
+  --text-secondary: #1f2937; /* Light theme (text-gray-800) */
+}
+
+:root {
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  --card-bg: rgba(39, 39, 42, 0.5);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #64ffda;
+  --gradient-start: rgba(255, 255, 255, 0.1);
+  --gradient-end: rgba(255, 255, 255, 0.05);
+}
+
+/* Light theme overrides */
+:root[class~="light"] {
+  --bg-primary: #ffffff;
+  --text-primary: #1a1a1a;
+  --card-bg: rgba(244, 244, 245, 0.7);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #0a84ff;
+  --gradient-start: rgba(0, 0, 0, 0.05);
+  --gradient-end: rgba(0, 0, 0, 0.02);
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+@layer components {
+  .heading-font {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+
+  .card {
+    @apply backdrop-blur-lg rounded-xl p-6 hover:shadow-2xl border relative overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-color: var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card:hover::before {
+    opacity: 0.1;
+  }
+
+  .stat-card {
+    @apply backdrop-blur-lg rounded-xl p-6 border transition-all duration-300 hover:scale-105;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-color: var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 font-semibold rounded-lg transition-all duration-200 relative overflow-hidden;
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-primary:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .section-title {
+    @apply text-2xl font-bold mb-6 heading-font;
+    color: var(--text-primary);
+  }
+
+  .grid-card {
+    @apply backdrop-blur-lg p-6 rounded-xl border transition-all duration-300 cursor-pointer hover:scale-[1.02] relative overflow-hidden;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-color: var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .grid-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent-color), transparent);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  .grid-card:hover::before {
+    opacity: 0.1;
+  }
+
+  .chart-container {
+    @apply h-[300px] w-full;
+  }
+
+  .data-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-all duration-200;
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+    opacity: 0.8;
+  }
+
+  .data-tag:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .skill-bar {
+    @apply h-2 rounded-full overflow-hidden relative;
+    background-color: var(--border-color);
+  }
+
+  .skill-progress {
+    @apply h-full rounded-full relative;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+  }
+
+  .skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+  }
+
+  .animated-border {
+    @apply relative;
+  }
+
+  .animated-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--accent-color), transparent, var(--accent-color));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: border-animation 4s linear infinite;
+  }
+
+  .modal-content {
+    @apply space-y-6 text-base leading-relaxed;
+  }
+
+  .modal-title {
+    @apply text-2xl font-bold heading-font mb-4;
+  }
+
+  .modal-section {
+    @apply space-y-2;
+  }
+
+  .modal-section-title {
+    @apply text-lg font-semibold heading-font mb-2;
+  }
+
+  .modal-list {
+    @apply list-disc list-inside space-y-1 text-gray-300;
+  }
+
+  .modal-tag {
+    @apply px-3 py-1 rounded-full text-sm font-medium bg-opacity-10 transition-all duration-200;
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+  }
+
+  .modal-tag:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+  }
+
+  @keyframes border-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
